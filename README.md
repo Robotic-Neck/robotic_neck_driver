@@ -31,7 +31,3 @@ TODO
 
 ## Documentation
 TODO
-
-## Authors
-* Cristian Nova (cristian.nova@uc.cl)
-* Name 2 (TODO)
