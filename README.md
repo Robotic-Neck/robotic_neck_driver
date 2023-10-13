@@ -6,7 +6,10 @@ ROS2 package to bringup the comunication between the platform and the computer`s
 </p>
 
 ## Dependencies
-* Framework: [ROS2 Humble (desktop)](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html)
+* Operating system: [Ubuntu 22.04](https://ubuntu.com/tutorials/install-ubuntu-desktop#1-overview)
+* Robotic Frameworks:
+  * [ROS2 Humble (desktop)](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html)
+  * [Vulcanexus (base)](https://docs.vulcanexus.org/en/humble/rst/installation/linux_binary_installation.html)
 * [launch_utils](https://github.com/MonkyDCristian/launch_utils)
 
 ## Install and Compile
