@@ -18,11 +18,6 @@ cd ..
 colcon build --packages-select robotic_neck_viz
 ```
 
-## Install python3-pykdl dependencie
-```
-sudo apt install python3-pykdl
-```
-
 ## Install ROS packages dependencies with rosdep  
 ```
 cd <path to your workspace>/src/
