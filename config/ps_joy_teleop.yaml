@@ -1,0 +1,102 @@
+# Copyright 2022 Open Source Robotics Foundation.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+# Teleop configuration for WAM-V Controller joystick using the d-pad
+# configuration.
+# Left thumb-stick up/down for left thruster thrust.
+# Left thumb-stick left/right for left thruster rotation.
+# Right thumb-stick up/down for right thruster thrust.
+# Right thumb-stick left/right for right thruster rotation.
+# "A" button for firing the ball shooter.
+#
+# Image from: https://github.com/turtlebot/turtlebot4_robot/blob/galactic/turtlebot4_bringup/config/turtlebot4_controller.config.yaml
+#
+#          L1                                       R1
+#          L2                                       R2
+#       _=====_                                  _=====_
+#      / _____ \                                / _____ \
+#    +.-'_____'-.------------------------------.-'_____'-.+
+#   /   |     |  '.   (BACK)       (START)   .'  |  _  |   \
+#  / ___| /|\ |___ \                        / ___| /\  |___ \
+# / |      |      | ;                      ; | _         _ ||
+# | | <---   ---> | |                      | | []        O ||
+# | |___   |   ___| ;                      ; |___       ___||
+# |\    | \|/ |    /  _      ____      _   \    |  X  |    /|
+# | \   |_____|  .','" "',          ,'" "', '.  |_____|  .' |
+# |  '-.______.-' /       \        /       \  '-._____.-'   |
+# |               |  LJ   |--------|  RJ   |                |
+# |              /\       /        \       /\               |
+# |             /  '.___.'          '.___.'  \              |
+# |            /                              \             |
+#  \          /                                \           /
+#   \________/                                  \_________/
+#
+#          ^ x
+#          |
+#          |
+#  y <-----+      Accelerometer axes
+#           \
+#            \
+#             > z (out)
+#
+# BUTTON         Value
+#   X              0
+#   O              1
+#   /\             2
+#   []             3
+#   L1             4
+#   R1             5
+#   L2             6
+#   R2             7
+#  share           8
+#  option          9
+#   PS            10
+#   L3            11
+#   R3            12
+#
+#    AXIS        Value
+# Left Horiz.      0
+# Left Vert.       1
+# L2         .     2
+# Right Horiz.     3
+# Right Vert.      4
+# R2               5
+# D-pad Horiz.     6
+# D-pad Vert.      7
+
+joy_teleop:
+  ros__parameters:
+    left_motor:
+      type: topic
+      interface_type: std_msgs/msg/Int16
+      topic_name: /rpip/motor_left_sub
+      deadman_buttons: [4]
+      axis_mappings:
+        data:
+          axis: 1
+          scale: 255
+          offset: 0
+
+    right_motor:
+      type: topic
+      interface_type: std_msgs/msg/Int16
+      topic_name: /rpip/motor_right_sub
+      deadman_buttons: [4]
+      axis_mappings:
+        data:
+          axis: 4
+          scale: 255
+          offset: 0
+
+ 
