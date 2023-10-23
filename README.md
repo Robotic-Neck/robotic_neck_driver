@@ -1,10 +1,10 @@
 # robotic_neck_driver
 ROS2 package to bringup the comunication between the platform and the computer`s user. it also contain a node to apply teleoperation by a PS4 controller.
-
+<!--
 <p align="center">
   <img width="640" height="480" src="neck_mec_sim.png">
 </p>
-
+-->
 ## Dependencies
 * Operating system: [Ubuntu 22.04](https://ubuntu.com/tutorials/install-ubuntu-desktop#1-overview)
 * Robotic Frameworks:
