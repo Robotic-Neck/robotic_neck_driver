@@ -25,7 +25,10 @@ def generate_launch_description():
     # ADD ROBOT STATE AND TARGET VIZUALIZATION
     launchs.append(include_launch(package_name="robotic_neck_viz", launch_file="robotic_neck_urdf.launch.py"))
     
+    # ADD CONTROLLER
+    launchs.append(include_launch(package_name="platform_controller", launch_file="robotic_neck_controller.launch.py"))
+
     # ADD OAK-D-LITE CAMERA
-    #launchs.append(include_launch(package_name="caleuche_viz", launch_file="camera.launch.py"))
+    launchs.append(include_launch(package_name="robotic_neck_driver", launch_file="camera.launch.py"))
 
     return LaunchDescription(launchs)
