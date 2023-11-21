@@ -27,7 +27,7 @@ class RoboticNeckJoy(Node):
         
         if msg.buttons[4] == 1:
             self.right_value.data = int(self.max_value * msg.axes[1])
-            self.left_value.data = int(-1 * self.max_value * msg.axes[4])
+            self.left_value.data = int(self.max_value * msg.axes[4])
         
         else:
             self.right_value.data = 0
