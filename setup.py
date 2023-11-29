@@ -9,7 +9,7 @@ data_files = [('share/ament_index/resource_index/packages', ['resource/' + packa
 folder_file_dir = {'launch':'.launch.py','config':'.yaml'}
 
 data_files = add_data_files(data_files, package_name, folder_file_dir)
-entry_points = add_entry_points(['joystick'], package_name)
+entry_points = add_entry_points(['joystick', 'imu_driver'], package_name)
 
 setup(
     name=package_name,

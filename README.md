@@ -1,5 +1,5 @@
 # robotic_neck_driver
-ROS2 package to bringup the comunication between the platform and the computer`s user. it also contain a node to apply teleoperation by a PS4 controller.
+ROS2 package to bringup the comunication between the platform and the computer`s user, to connect the RPI pico and the arduino-IMU. it also contain a node to apply teleoperation by a PS4 controller.
 <!--
 <p align="center">
   <img width="640" height="480" src="neck_mec_sim.png">
@@ -28,9 +28,28 @@ rosdep install -i --from-path src --rosdistro humble -y
 ```
 
 ## Demo
+**Note**: Execute all these launches in different terminals.
+
+1. Conect the RPI pico:
 ```
-TODO
+ls /dev/serial/by-id/*
+ros2 run micro_ros_agent micro_ros_agent serial --dev <port>
+```
+
+2. Open the IK vizualization:
+```
+ros2 launch robotic_neck_viz robotic_neck_urdf.launch.py 
+```
+
+3. Connect the Arduino-IMU:
+```
+ros2 run robotic_neck_driver imu_driver
+```
+
+4. Start controller:
+```
+ros2 launch platform_controller robotic_neck_controller.launch.py
 ```
 
 ## Documentation
-TODO
+The IMU code is [here](/arduino/IMU), check it out in Arduino IDE.
