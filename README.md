@@ -45,7 +45,7 @@ ros2 launch robotic_neck_viz robotic_neck_urdf.launch.py
 ```
 ros2 run robotic_neck_driver imu_driver
 ```
-Note: To change the port edit it [here](/robotic_neck_driver/imu_driver.py) on line 12.
+**Note:** To change the port edit it [here](/robotic_neck_driver/imu_driver.py) on line 12.
 
 
 4. Start controller:
