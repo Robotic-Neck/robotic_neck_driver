@@ -41,7 +41,7 @@ ros2 run micro_ros_agent micro_ros_agent serial --dev <port>
 ros2 launch robotic_neck_viz robotic_neck_urdf.launch.py 
 ```
 
-3. Connect the Arduino-IMU to port /dev/ttyUSB0:
+3. Connect the Arduino-IMU by port /dev/ttyUSB0:
 ```
 ros2 run robotic_neck_driver imu_driver
 ```
