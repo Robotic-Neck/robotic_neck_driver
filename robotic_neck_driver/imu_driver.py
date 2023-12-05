@@ -16,8 +16,7 @@ class IMUDriver(Node):
     
     def set_parameters(self):
         self.roll = 0.0
-        self.pitch = 0.0 
-        self.interpolation = 0.84   
+        self.pitch = 0.0  
     
     def set_connections(self):
         self.pitch_pub = self.create_publisher(Float32, '/rpip/pitch', 1)
@@ -26,11 +25,10 @@ class IMUDriver(Node):
     def publish_angles(self):
         if self.ser.in_waiting > 0:
             data = self.ser.readline().decode('utf-8').rstrip().split('/')
-            
-            self.roll = np.deg2rad(float(data[0]) * self.interpolation)
-            self.pitch = np.deg2rad(float(data[1]) * self.interpolation)
-        
-        
+
+            self.roll = np.deg2rad(float(data[0]))
+            self.pitch = np.deg2rad(float(data[1]))
+
         #print(f"roll: {self.roll} pitch: {self.pitch}")
         self.pitch_pub.publish(Float32(data=self.pitch))
         self.roll_pub.publish(Float32(data=self.roll))
