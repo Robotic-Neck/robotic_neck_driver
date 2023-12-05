@@ -42,5 +42,3 @@ def main():
     node = IMUDriver()
     rclpy.spin(node)
     rclpy.shutdown()
-
-main()

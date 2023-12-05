@@ -47,7 +47,7 @@ float AccErrorX = -1.07, AccErrorY = -2.54; //calculated values
 //float AccErrorX, AccErrorY; //calculated values
 float GyroErrorX, GyroErrorY, GyroErrorZ;
 float elapsedTime, currentTime, previousTime;
-float interpolation = 0.843;
+float filter_roll, filter_pitch;
 int c = 0;
 
 #define LED_PIN 13
@@ -118,9 +118,23 @@ void loop() {
     roll = 0.96 * (roll + gyroAngleX * elapsedTime) + 0.04 * accAngleX;
     pitch = 0.96 * (pitch + gyroAngleY * elapsedTime) + 0.04 * accAngleY;
 
-    // Print the values on the serial monitor
-    Serial.print(roll*interpolation); Serial.print("/"); Serial.println(pitch*interpolation);
-
+    if (roll < 0) {
+      filter_roll = -1*((-1*roll)*((0.06/25)*(-1*roll) + 0.8));
+    }
+    else {
+      filter_roll = roll*((0.06/25)*roll + 0.8);
+    }
+    
+    if (pitch < 0) {
+      filter_pitch = -1*((-1*pitch)*((0.06/25)*(-1*pitch) + 0.8));
+    }
+    else {
+      filter_pitch = pitch*((0.06/25)*pitch + 0.8);
+    }
+    
+    //Serial.print(filter_roll); Serial.print("/"); Serial.println(filter_pitch);
+    Serial.print(roll); Serial.print("/"); Serial.println(pitch);
+    
     // blink LED to indicate activity
     blinkState = !blinkState;
     digitalWrite(LED_PIN, blinkState);
