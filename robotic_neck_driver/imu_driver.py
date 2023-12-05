@@ -26,9 +26,11 @@ class IMUDriver(Node):
     def publish_angles(self):
         if self.ser.in_waiting > 0:
             data = self.ser.readline().decode('utf-8').rstrip().split('/')
+            
             self.roll = np.deg2rad(float(data[0]) * self.interpolation)
             self.pitch = np.deg2rad(float(data[1]) * self.interpolation)
-
+        
+        
         #print(f"roll: {self.roll} pitch: {self.pitch}")
         self.pitch_pub.publish(Float32(data=self.pitch))
         self.roll_pub.publish(Float32(data=self.roll))
@@ -42,3 +44,5 @@ def main():
     node = IMUDriver()
     rclpy.spin(node)
     rclpy.shutdown()
+
+main()

@@ -43,10 +43,11 @@ int16_t ax, ay, az;
 int16_t gx, gy, gz;
 float roll, pitch;
 float accAngleX, accAngleY, gyroAngleX, gyroAngleY;
-float AccErrorX = -0.006211436819285154, AccErrorY = -0.027438277378678322; //calculated values
+float AccErrorX = -1.07, AccErrorY = -2.54; //calculated values
 //float AccErrorX, AccErrorY; //calculated values
 float GyroErrorX, GyroErrorY, GyroErrorZ;
 float elapsedTime, currentTime, previousTime;
+float interpolation = 0.843;
 int c = 0;
 
 #define LED_PIN 13
@@ -118,7 +119,7 @@ void loop() {
     pitch = 0.96 * (pitch + gyroAngleY * elapsedTime) + 0.04 * accAngleY;
 
     // Print the values on the serial monitor
-    Serial.print(roll); Serial.print("/"); Serial.println(pitch);
+    Serial.print(roll*interpolation); Serial.print("/"); Serial.println(pitch*interpolation);
 
     // blink LED to indicate activity
     blinkState = !blinkState;
